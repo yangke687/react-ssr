@@ -8,7 +8,7 @@ const config = {
    * for nodeJS, rather than for the browser
    */
   target: 'node',
-  /** Tell webpakc the root file of our server 
+  /** Tell webpack the root file of our server 
    * application
    */
   entry: './src/index.js',
