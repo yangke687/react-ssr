@@ -20,7 +20,7 @@ const config = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
   },
-  /** anything that inside the node moduels 
+  /** anything that inside the node modules
    * will not be included into our server side bundle.js 
    * */
   externals: [
