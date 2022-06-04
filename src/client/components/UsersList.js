@@ -8,27 +8,34 @@ class UsersList extends Component {
   }
 
   componentDidMount() {
-    const { users, fetchUsers } = this.props;
+    const { fetchUsers } = this.props;
     fetchUsers();
-    console.log(users); 
   }
 
   render() {
-    const { users }= this.props;
+    const { users } = this.props;
     return (
       <div>
         A big users list:
         <ul>
-          {users.map((user, idx) => <li key={user.id}>{user.name}</li>)}
+          {users.map((user, idx) => (
+            <li key={user.id}>{user.name}</li>
+          ))}
         </ul>
       </div>
-    )
+    );
   }
 }
 
-export default connect(function(state){
-  return {
-    users: state.users
-  }
-}, { fetchUsers })(UsersList);
+export default connect(
+  function (state) {
+    return {
+      users: state.users,
+    };
+  },
+  { fetchUsers },
+)(UsersList);
 
+export const loadData = (store) => {
+  return store.dispatch(fetchUsers());
+};

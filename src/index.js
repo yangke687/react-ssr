@@ -13,9 +13,17 @@ app.get('*', (req, res) => {
 
   // Some logic to initialize
   // and load data into the store
-  console.log(matchRoutes(routes, req.path));
+  const matchedRoutes = matchRoutes(routes, req.path);
 
-  res.send(renderer(req, store));
+  const promises = matchedRoutes.map(({ route }) => {
+    if (route.loadData) {
+      return route.loadData(store);
+    }
+  });
+
+  Promise.all(promises).then(() => {
+    res.send(renderer(req, store));
+  });
 });
 
 app.listen(3000, () => {
