@@ -27,7 +27,7 @@ class UsersList extends Component {
   }
 }
 
-export default connect(
+const component = connect(
   function (state) {
     return {
       users: state.users,
@@ -36,6 +36,11 @@ export default connect(
   { fetchUsers },
 )(UsersList);
 
-export const loadData = (store) => {
+const loadData = (store) => {
   return store.dispatch(fetchUsers());
+};
+
+export default {
+  component,
+  loadData,
 };

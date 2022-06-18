@@ -1,8 +1,7 @@
 import React from 'react';
 
 const Home = () => {
-  
-  const handleClick = function(){
+  const handleClick = function () {
     console.log('Hi, there');
   };
 
@@ -14,4 +13,6 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default {
+  component: Home,
+};
